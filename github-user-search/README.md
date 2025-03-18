@@ -8,7 +8,7 @@ Este projeto é ideal para praticar consumo de APIs, manipulação de dados no R
 Este aplicativo permite que os usuários pesquisem perfis do GitHub pelo nome de usuário. Ao realizar a busca, ele exibe as seguintes informações sobre o perfil encontrado:
 
 - Foto de perfil.
-- Nome de exibição.
+- Nome de exibição (quando disponível).
 - Biografia (quando disponível).
 - Número de repositórios públicos.
 - Lista dos repositórios públicos com links para cada um.
@@ -32,7 +32,7 @@ A interface é intuitiva, responsiva e estilizada para oferecer uma boa experiê
 
 ## Demonstração
 
-[Link para o projeto ao vivo](https://github.com/MuriloJrSis/github-user-search-app)
+[Link para o projeto ao vivo](https://github.com/MuriloJrSis/github-user-search)
 
 ## Prints
 
