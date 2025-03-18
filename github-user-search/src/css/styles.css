@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-weight: 300;
+}
+
+img {
+  max-width: 100%;
+}
+
+body {
+  background-color:#24292e;
+  font-family: "Kumbh Sans", sans-serif;  
+  text-align: center;    
+  padding-bottom: 100px;
+}
+
+main {
+  display: flex;  
+  justify-content: center;
+  flex-direction: column;
+  padding: 50px 0 0;      
+}
+
+.section{
+  padding: 70px 0;
+}
+
+.container {
+  width: 60%;
+  max-width: 960px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 25px 50px -12px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 30px;
+  padding: 30px;
+  margin: 0 auto;
+}
+
+/* Responsividade */
+@media (max-width: 1280px) {
+  .container {
+    flex-direction: column;
+    width: 90%;
+    border-radius: 20px;
+  }
+
+  .container header {
+    width: 100%;
+  }
+
+  .container header h1 {
+    font-size: 24px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .container header #input-search,
+  .container header #btn-search {
+    width: 100%;
+  }
+}
+
+@media (max-width: 425px) {
+  main {
+    padding: 15% 0;    
+  }
+
+  .profile-data .info img {
+    margin-bottom: 20px;
+  }
+
+  .profile-data .info img,
+  .profile-data .info .data {
+    width: 100%;
+    padding: 0;
+  }
+}

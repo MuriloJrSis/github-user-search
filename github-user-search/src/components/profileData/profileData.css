@@ -1,0 +1,65 @@
+.profile-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;  
+}
+
+.profile-data .info {
+  display: flex;  
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.profile-data .info .data {
+  padding: 40px;
+  width: 50%;
+}
+
+.profile-data .info img {
+  width: 50%;
+  border-radius: 50%;
+  border: 10px solid darkcyan;
+}
+
+.profile-data .info h1 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.profile-data .info p {
+  font-size: 15px;  
+  font-weight: 400;
+  line-height: 23px;
+}
+
+/* Repositórios */
+.profile-data .repositories h2 {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.profile-data .repositories ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.profile-data .repositories ul li a {
+  padding: 20px;
+  border: 1px solid grey;  
+  margin: 20px;
+  display: block;
+  border-radius: 7px;
+  transition: 0.3s ease-in-out;
+}
+
+.profile-data .repositories ul li a:hover {
+  background-color: darkcyan;
+  color: #fff;
+}
+
+.profile-data.hide {
+  display: none;
+}
