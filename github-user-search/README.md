@@ -28,7 +28,7 @@ A interface é intuitiva, responsiva e estilizada para oferecer uma boa experiê
 
 - **Interface com Estilização Moderna e Responsiva com CSS puro**: Funciona bem em dispositivos móveis e desktops. Possui uma Interface limpa com design atrativo.
 
-- **Tratamento de erros para usuários nao encontrados**: 
+- **Tratamento de erros para usuários nao encontrados**:
 
 ## Demonstração
 
@@ -57,28 +57,31 @@ A interface é intuitiva, responsiva e estilizada para oferecer uma boa experiê
 ## Como executar o projeto localmente
 
 1. Clone o repositório:
-    ```bash
-    git clone https://github.com/MuriloJrSis/github-user-search.git
-    ```
+
+   ```bash
+   git clone https://github.com/MuriloJrSis/github-user-search.git
+   ```
 
 2. Navegue até a pasta do projeto:
-    ```bash
-    cd github-user-search-app
-    ```
+
+   ```bash
+   cd github-user-search-app
+   ```
 
 3. Instale as dependências:
-    ```bash
-    npm install
-    ```
+
+   ```bash
+   npm install
+   ```
 
 4. Inicie a aplicação:
-    ```bash
-    npm start
-    ```
+
+   ```bash
+   npm start
+   ```
 
 5. Acesse no navegador:
-    [http://localhost:3000](http://localhost:3000)
-
+   [http://localhost:3000](http://localhost:3000)
 
 ### Estrutura de Projeto
 
@@ -87,15 +90,15 @@ A interface é intuitiva, responsiva e estilizada para oferecer uma boa experiê
   - **src/**: Código-fonte do projeto
     - **components/**: Componentes reutilizáveis (icon, userSearch, profileData)
     - **styles/**: Arquivos de estilo (reset, styles)
-    - **services/**: Arquivos de serviçoes (user, repositories) 
-    - **variables/**: Arquivo de variáveis(variables) 
+    - **services/**: Arquivos de serviçoes (user, repositories)
+    - **variables/**: Arquivo de variáveis(variables)
     - **App.js**: Componente principal
     - **index.js**: Ponto de entrada do React
     - Outros arquivos do projeto
   - **.gitignore**: Arquivos/pastas ignorados pelo Git
   - **package.json**: Dependências e scripts
   - **README.md**: Documentação do projeto
-    
+
 ## API Utilizada
 
 ### GitHub API
@@ -103,63 +106,92 @@ A interface é intuitiva, responsiva e estilizada para oferecer uma boa experiê
 **Documentação oficial:**  
 [GitHub REST API](https://docs.github.com/en/rest)
 
-**Endpoints utilizados:**  
+**Endpoints utilizados:**
 
 - **Buscar usuário:** [https://api.github.com/users/{username}](https://api.github.com/users/{username})
 - **Listar repositórios:** [https://api.github.com/users/{username}/repos](https://api.github.com/users/{username}/repos)
 
-## Desafios
+## Desafios Enfrentados
 
- Esse código é um produto de uma conversão de um código JavaScript de uma video aula para a biblioteca React trazendo diversos desafios que foram fundamentais para o meu aprendizado, permitindo um melhor entendimento dos conceitos e funcionalidades do React. Aqui estão os principais desafios enfrentados e como os superei:
+Esse código é um produto de uma conversão de um código Html, Css e JavaScript de uma video aula para a biblioteca React, trazendo diversos desafios que foram fundamentais para o meu aprendizado, permitindo um melhor entendimento dos conceitos e funcionalidades do React. Aqui estão os principais desafios enfrentados e como os superei:
 
-### 1. Transição de uma abordagem imperativa para declarativa
+### 1. Estruturação do Projeto
 
-- **Desafio:** O código original que você forneceu utilizava uma abordagem imperativa para manipular o DOM. Isso significava que você estava fazendo tudo de forma manual, usando `getElementById`, `addEventListener`, e manipulando diretamente o DOM para atualizar a página. Em React, a abordagem é declarativa, ou seja, você descreve o que a UI deve fazer, e o React se encarrega de atualizar o DOM por conta própria, conforme o estado da aplicação muda.
+A separação do código em componentes reutilizáveis foi um dos principais desafios. No código original, a lógica estava toda centralizada nos arquivos JavaScript, manipulando diretamente o DOM. Em React, precisei dividir as funcionalidades em componentes menores, como:
 
-- **Solução:** No React, eu precisei reorganizar o código para seguir esse modelo declarativo. Ao invés de manipular diretamente os elementos da página, como no JavaScript puro, eu criei componentes React que representam partes da UI. Cada componente pode ter seu próprio estado e pode renderizar sua parte da interface com base nesse estado. Por exemplo, criei o componente `userProfile` para renderizar as informações do usuário, e ele é automaticamente re-renderizado sempre que o estado do usuário muda. Isso simplifica muito a manutenção do código, pois a UI reflete automaticamente o estado sem que eu precise me preocupar em atualizar o DOM manualmente.
+- `UserSearch`: Componente responsável pela entrada de dados e busca do usuário.
+
+- `ProfileData`: Responsável por exibir os dados do usuário e seus repositórios.
+
+- `Icon`: Exibe o ícone do GitHub.
+
+- `App.js`: Componente principal que gerencia o estado da aplicação.
 
 ### 2. Gerenciamento de Estado
 
-- **Desafio:** No código em JavaScript, não havia um gerenciamento centralizado do estado. As interações com o usuário e a exibição dos dados estavam misturadas, o que tornava difícil controlar as mudanças no estado da aplicação. À medida que a aplicação cresce, esse tipo de abordagem pode se tornar difícil de gerenciar. Em React, o gerenciamento de estado é um dos pilares principais, onde você mantém as variáveis que representam o estado da aplicação e garante que a interface seja atualizada quando esses valores mudam.
+Em JavaScript puro, a manipulação de elementos do DOM era feita diretamente com `document.querySelector` e `innerHTML`. Em React, precisei gerenciar o estado com `useState`, garantindo que as mudanças na interface fossem refletidas corretamente.
 
-- **Solução:** Para resolver isso, eu implementei o gerenciamento de estado usando `useState` no React. Em vez de realizar operações no DOM diretamente, como o código original, os dados (como o nome do usuário e os repositórios) são armazenados em variáveis de estado no React. Quando o usuário faz uma busca, o estado é atualizado com os dados retornados da API, e a UI é automaticamente re-renderizada para refletir essas mudanças. Esse tipo de gerenciamento de estado ajuda a manter a aplicação organizada e facilita o rastreamento de quaisquer mudanças.
+- Criar estados para armazenar o nome do usuário digitado, os dados do perfil e a informação se o usuário foi encontrado.
 
-### 3. Modularização da Lógica de Busca e Exibição
+- Atualizar o estado de forma assíncrona após chamadas à API do GitHub.
 
-- **Desafio:** No código original, a lógica de busca e a exibição de dados estavam concentradas em um único fluxo, o que dificultava a reutilização e a escalabilidade. Em React, é importante dividir a aplicação em pequenos componentes que sejam responsáveis por partes específicas da interface, como o formulário de busca e a exibição dos dados do usuário.
+### 3. Consumo de API e Tratamento de Erros
 
-- **Solução:** Eu dividi a lógica em componentes React, como o componente `userSearch` para o formulário de pesquisa e o componente `userProfile` para mostrar as informações do usuário. Isso tornou o código mais modular e fácil de entender, além de permitir que eu reutilizasse esses componentes em diferentes partes do código, caso fosse necessário. A separação de responsabilidades em componentes ajuda a tornar a aplicação mais escalável e facilita a manutenção a longo prazo.
+No JavaScript puro, as chamadas `fetch` eram feitas sem tratamento robusto de erros. Durante a conversão para React:
+
+Utilizei `async/await` para tornar o código mais legível.
+
+Adicionei `try/catch` para capturar erros e evitar que falhas na API quebrem a aplicação.
+
+Melhorei a validação de entrada para evitar requisições desnecessárias.
 
 ### 4. Manipulação de Eventos no React
 
-- **Desafio:** O código original utilizava `addEventListener` para associar eventos aos elementos do DOM, como clicar no botão de busca ou pressionar a tecla "Enter" para realizar uma pesquisa. Em React, a forma de manipular eventos é diferente. Ao invés de usar métodos como `addEventListener`, você associa diretamente os eventos aos elementos JSX usando as propriedades do React, como `onClick` e `onKeyUp`.
+No JavaScript puro, eventos eram manipulados diretamente com `addEventListener`. Em React, utilizei:
 
-- **Solução:** Para adaptar os eventos para React, substituí as chamadas a `addEventListener` pelos manipuladores de eventos no JSX. Por exemplo, o evento de clique no botão de busca foi substituído pelo atributo `onClick` do React, e a escuta para a tecla "Enter" foi substituída pelo `onKeyUp`. Essa abordagem no React é mais declarativa e simplifica o código, pois os eventos estão diretamente ligados aos componentes que manipulam os dados e a interface do usuário.
+- `onChange` para capturar o que o usuário digita no input.
+
+- `onClick` para acionar a busca do usuário.
+
+- `onKeyUp` para permitir a busca ao pressionar Enter.
+
+### 5. Estilização
+
+O CSS foi mantido separado, mas ajustado para garantir compatibilidade com a estrutura de componentes.
+
+ - Importei os estilos globais em App.js.
+
+ - Mantive estilos específicos dentro de cada componente.
+
+ - Evitei manipulação direta do DOM para aplicação de estilos dinâmicos.
 
 ---
 
 ## Aprendizados
 
-1. **Adaptação para uma abordagem declarativa:** Aprendi como o React adota uma abordagem declarativa para a construção de interfaces de usuário, o que facilita muito a manutenção e escalabilidade da aplicação. Ao invés de gerenciar diretamente o DOM, agora eu trabalho com componentes e estado, e o React se encarrega de atualizar a UI de forma eficiente.
+1. **Componentização:** Separar o código em componentes menores tornou a manutenção mais fácil.
 
-2. **Uso do `useState` para gerenciamento de estado:** A introdução do `useState` foi uma das partes mais desafiadoras, mas também mais gratificantes. Agora, posso gerenciar de forma clara e controlada os dados da aplicação, e a interface reflete automaticamente as mudanças quando o estado é alterado, sem precisar mexer diretamente no DOM.
+2. **Gerenciamento de Estado:** `useState` ajudou a atualizar a interface de forma dinâmica e eficiente..
 
-3. **Divisão em componentes:** A ideia de dividir a aplicação em componentes independentes e reutilizáveis é um grande aprendizado. Isso me ajuda a escrever um código mais modular, onde cada parte tem uma responsabilidade clara. Além disso, facilita a reutilização de partes da aplicação em diferentes contextos.
+3. **Boas práticas com APIs:**  Adicionar tratamento de erros melhorou a robustez do projeto.
 
-4. **Manejo de eventos no JSX:** A transição de manipulação de eventos de uma forma procedural (usando `addEventListener`) para a forma declarativa do React foi um aprendizado importante. Aprendi a associar eventos diretamente nos componentes JSX, o que torna o código mais limpo e fácil de entender.
+4. **Manejo de Eventos no JSX:** Aprendi a lidar com eventos de forma declarativa e mais organizada, associando eventos diretamente nos componentes JSX, o que torna o código mais limpo e fácil de entender.
 
-5. **Manutenção e escalabilidade:** Ao trabalhar com React, compreendi como a modularização e o gerenciamento de estado são fundamentais para criar aplicações escaláveis e de fácil manutenção. À medida que a aplicação cresce, a estrutura declarativa do React facilita muito a adição de novos recursos sem que o código fique desorganizado.
+5. **Separar a lógica de renderização:** Com React, pude dividir melhor a lógica de negócio da camada de apresentação.
+
+6. **Manutenção e escalabilidade:** À medida que a aplicação cresce, a estrutura declarativa do React facilita muito a adição de novos recursos sem que o código fique desorganizado.
+
+Esta experiência foi valiosa para aprimorar minhas habilidades com React e melhorar minha compreensão sobre boas práticas na construção de aplicações front-end modernas.
 
 ## Autor
 
-**Murilo Júnior**  
+**Murilo Júnior**
 
-- [GitHub](https://github.com/MuriloJrSis)  
-- [LinkedIn](https://www.linkedin.com/in/murilojr-sis)  
+- [GitHub](https://github.com/MuriloJrSis)
+- [LinkedIn](https://www.linkedin.com/in/murilojr-sis)
 
 ---
 
 ## Licença
 
 Este projeto está licenciado sob a [MIT License](https://opensource.org/licenses/MIT).
-

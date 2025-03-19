@@ -1,5 +1,10 @@
 import { baseUrl, respositoriesQuantity } from '../variables/variables'
 
+/**
+ * Busca os repositórios públicos do usuário no GitHub
+ * @param {string} userName - Nome de usuário do GitHub
+ * @returns {Promise<Array>} - Retorna uma lista de repositórios ou um array vazio em caso de erro
+ */
 const getRepositories = async (userName) => {
     try{
     const response = await fetch(`${baseUrl}/${userName}/repos?per_page=${respositoriesQuantity}`)
@@ -13,5 +18,3 @@ const getRepositories = async (userName) => {
 
 export default getRepositories
 
-
-//se a promise em dar um json porque tenho que converter
